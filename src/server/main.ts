@@ -2,12 +2,27 @@ import express from "express";
 import ViteExpress from "vite-express";
 import bodyParser from "body-parser";
 import router from "./routes/api";
+import cors from 'cors';
+import connectDB from "./utils/db";
+import authRoutes from './routes/authRoutes';
+import fileRoutes from './routes/fileRoutes';
+import userRoutes from './routes/userRoutes';
 
 const app = express();
 
-app.use(bodyParser.json())
-app.use("/api", router);
+// app.use(bodyParser.json())
+// app.use("/api", router);
 
-ViteExpress.listen(app, 3000, () =>
-  console.log("Server is listening on port 3000..."),
-);
+app.use(cors());
+app.use(express.json());
+app.use('/uploads', express.static('uploads'));
+
+app.use('/api', authRoutes);
+app.use('/api', fileRoutes);
+app.use('/api', userRoutes);
+
+connectDB().then(() => {
+  ViteExpress.listen(app, 3000, () =>
+    console.log("Server is listening on port 3000..."),
+  );
+});

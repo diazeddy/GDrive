@@ -1,6 +1,5 @@
-// src/components/Login.tsx
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { login } from '../api/api';
 
 const Login: React.FC = () => {
@@ -20,26 +19,31 @@ const Login: React.FC = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h1>Login</h1>
-            <label>
-                Username:
-                <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-            </label>
-            <label>
-                Password:
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </label>
-            <button type="submit">Login</button>
-        </form>
+        <>
+            <form onSubmit={handleSubmit}>
+                <h1>Login</h1>
+                <label>
+                    Username:
+                    <input
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </label>
+                <label>
+                    Password:
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </label>
+                <button type="submit">Login</button>
+            </form>
+            <NavLink to="/register">
+                <button>Register</button>
+            </NavLink>
+        </>
     );
 };
 

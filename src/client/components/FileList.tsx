@@ -1,5 +1,5 @@
-import React from "react";
-import FileItem from "./FileItem";
+import React from 'react';
+import FileItem from './FileItem';
 
 interface FileListProps {
     files: any[];
@@ -12,7 +12,7 @@ const FileList: React.FC<FileListProps> = ({ files }) => {
                 <FileItem key={file._id} file={file} />
             ))}
         </ul>
-    ); 
-}
+    );
+};
 
 export default FileList;

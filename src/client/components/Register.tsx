@@ -1,4 +1,3 @@
-// src/components/Register.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { register } from '../api/api';
@@ -28,7 +27,7 @@ const Register: React.FC = () => {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                 />
-                </label>
+            </label>
             <label>
                 Password:
                 <input
