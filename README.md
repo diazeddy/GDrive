@@ -19,6 +19,9 @@ Create a simple cloud application that is similar to Google Drive
 - Used the binary type in mongodb to save the file since the maximum file size is 5MB.
 - Render the text and images files on the page by converting the byte data into string and image url.
 
+## Screenshots
+[View Screenshots](/screenshots)
+
 ## Environment
 - Windows 11
 - Node v16.14.0
