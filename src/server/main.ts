@@ -1,7 +1,5 @@
 import express from "express";
 import ViteExpress from "vite-express";
-import bodyParser from "body-parser";
-import router from "./routes/api";
 import cors from 'cors';
 import connectDB from "./utils/db";
 import authRoutes from './routes/authRoutes';
@@ -9,9 +7,6 @@ import fileRoutes from './routes/fileRoutes';
 import userRoutes from './routes/userRoutes';
 
 const app = express();
-
-// app.use(bodyParser.json())
-// app.use("/api", router);
 
 app.use(cors());
 app.use(express.json());

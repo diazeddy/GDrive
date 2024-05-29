@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getFiles, uploadFile } from "../api/api";
+import { getFiles } from "../api/api";
 import FileList from "./FileList";
 import axios from "axios";
 
@@ -46,13 +46,15 @@ const Dashboard: React.FC = () => {
             console.error('Error uploading file:', error);
         }
     };
-
+    console.log("@@@files", files);
     return (
-        <div>
-            <h1>Dashboard</h1>
+        <div className="max-w-6xl mx-auto p-6 bg-white rounded shadow-md">
+            <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
             <input type="file" onChange={handleFileChange} />
-            <button onClick={handleUpload}>Upload</button>
-            <FileList files={files} />
+            <button className="inline-block mb-4 px-4 py-2 bg-green-500 text-white rounded" onClick={handleUpload}>Upload</button>
+            <div className="space-y-4">
+                <FileList files={files} />
+            </div>
         </div>
     );
 };

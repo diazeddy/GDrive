@@ -1,5 +1,3 @@
-// Create a MongoDB model for File
-
 import { Schema, model, Document } from 'mongoose';
 
 interface IFile extends Document {

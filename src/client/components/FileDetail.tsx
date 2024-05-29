@@ -74,7 +74,7 @@ const FileDetail: React.FC = () => {
     const handleCopyLink = () => {
         navigator.clipboard.writeText(window.location.href);
         alert('Link copied to clipboard');
-    }
+    };
 
     const handleShare = async () => {
         if(!selectedUser) {
@@ -104,12 +104,15 @@ const FileDetail: React.FC = () => {
     }
 
     return (
-        <div>
-            <h1>File Detail: {file.name}</h1>
-            <button onClick={handleCopyLink}>Copy Link</button>
-            <div>
-                <label htmlFor='share-user'>Share with:</label>
-                <select id="share-user" value={selectedUser} onChange={e => setSelectedUser(e.target.value)}>
+        <div className="max-w-4xl mx-auto p-6 bg-white rounded shadow-md">
+            <h1 className="text-2xl font-bold mb-4">File Detail: {file.name}</h1>
+            <div className="flex space-x-4 mb-4">
+                <button className="px-4 py-2 bg-red-500 text-white rounded" onClick={handleCopyLink}>Copy Link</button>
+                <button className="px-4 py-2 bg-blue-500 text-white rounded" onClick={handleDelete}>Delete</button>
+            </div>
+            <div className="mb-4">
+                <label htmlFor='share-user' className="block text-sm font-medium text-gray-700">Share with:</label>
+                <select id="share-user" value={selectedUser} onChange={e => setSelectedUser(e.target.value)} className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                     <option value="">Select a user</option>
                     {
                         users?.map(user => (
@@ -117,10 +120,10 @@ const FileDetail: React.FC = () => {
                         ))
                     }
                 </select>
-                <button onClick={handleShare}>Share</button>
+                <button className="mt-2 px-4 py-2 bg-green-500 text-white rounded" onClick={handleShare}>Share</button>
             </div>
-            <a href={`http://localhost:3000/uploads/${file.path}`} download>
-                <button>Download</button>
+            <a href={`http://localhost:3000/uploads/${changePathName(file.path)}`} download>
+                <button className="px-4 py-2 bg-orange-500 text-white rounded">Download</button>
             </a>
             <div>
                 <label>
@@ -133,7 +136,7 @@ const FileDetail: React.FC = () => {
                 </label>
                 <button onClick={handleRename}>Rename</button>
             </div>
-            <button onClick={handleDelete}>Delete</button>
+            
             {file.name.endsWith('.txt') && (
                 <div>
                     <h2>File Content</h2>

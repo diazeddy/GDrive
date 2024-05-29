@@ -1,5 +1,3 @@
-// Create a MongoDB model for User
-
 import { Schema, model, Document } from 'mongoose';
 
 interface IUser extends Document {
