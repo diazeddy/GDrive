@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { IFile } from '../types/types';
 
 interface FileItemProps {
-    file: any;
+    file: IFile;
 }
 
 const FileItem: React.FC<FileItemProps> = ({ file }) => {

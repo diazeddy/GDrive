@@ -1,8 +1,9 @@
 import React from 'react';
 import FileItem from './FileItem';
+import { IFile } from '../types/types';
 
 interface FileListProps {
-    files: any[];
+    files: IFile[];
 }
 
 const FileList: React.FC<FileListProps> = ({ files }) => {

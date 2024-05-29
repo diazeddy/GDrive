@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getFileDetail, deleteFile, renameFile } from '../api/api';
+import { IFile, IUser } from '../types/types';
 import axios from 'axios';
 
 const FileDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
-    const [file, setFile] = useState<any>(null);
-    const [newName, setNewName] = useState('');
-    const [users, setUsers] = useState<any[]>([]);
+    const [file, setFile] = useState<IFile | null>(null);
+    const [newName, setNewName] = useState<string>('');
+    const [users, setUsers] = useState<IUser[]>([]);
     const [selectedUser, setSelectedUser] = useState<string>('');
     const [text, setText] = useState<string>('');
     const navigate = useNavigate();
@@ -65,7 +66,7 @@ const FileDetail: React.FC = () => {
         const token = localStorage.getItem('token') || '';
         try {
             await renameFile(id!, newName, token);
-            setFile({ ...file, name: newName });
+            setFile(prevFile => prevFile ? {...prevFile, name: newName} : null);
         } catch (error) {
             console.error('Error renaming file:', error);
         }

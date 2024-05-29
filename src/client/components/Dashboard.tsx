@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { getFiles } from "../api/api";
 import FileList from "./FileList";
+import { IFile } from "../types/types";
 import axios from "axios";
 
 const Dashboard: React.FC = () => {
-    const [files, setFiles] = useState<any[]>([]);
+    const [files, setFiles] = useState<IFile[]>([]);
     const [file, setFile] = useState<File | null>(null);
 
     useEffect(() => {
@@ -46,7 +47,7 @@ const Dashboard: React.FC = () => {
             console.error('Error uploading file:', error);
         }
     };
-    console.log("@@@files", files);
+
     return (
         <div className="max-w-6xl mx-auto p-6 bg-white rounded shadow-md">
             <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
